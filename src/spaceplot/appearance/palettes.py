@@ -1,3 +1,5 @@
+from cmcrameri import cm
+
 set25 = [
     '#72FFAB',
     '#A16CFD',

@@ -1235,6 +1235,47 @@ wheels = [
 ]
 
 [[package]]
+name = "mpl-spaceplot"
+version = "0.1.0"
+source = { editable = "." }
+dependencies = [
+    { name = "cmcrameri" },
+    { name = "matplotlib" },
+]
+
+[package.dev-dependencies]
+dev = [
+    { name = "ipykernel" },
+    { name = "ipywidgets" },
+    { name = "jupytext" },
+    { name = "pre-commit" },
+    { name = "ruff" },
+]
+docs = [
+    { name = "mkdocs" },
+    { name = "mkdocs-material" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "cmcrameri", specifier = ">=1.9" },
+    { name = "matplotlib", specifier = ">=3.7" },
+]
+
+[package.metadata.requires-dev]
+dev = [
+    { name = "ipykernel", specifier = ">=6.30.1" },
+    { name = "ipywidgets", specifier = ">=8.1.7" },
+    { name = "jupytext", specifier = ">=1.18.0" },
+    { name = "pre-commit", specifier = ">=4.3.0" },
+    { name = "ruff", specifier = "==0.13.1" },
+]
+docs = [
+    { name = "mkdocs", specifier = "~=1.6" },
+    { name = "mkdocs-material", specifier = "~=9.6" },
+]
+
+[[package]]
 name = "nbformat"
 version = "5.10.4"
 source = { registry = "https://pypi.org/simple" }
@@ -2056,47 +2097,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/94/e7/b2c673351809dca68a0e064b6af791aa332cf192da575fd474ed7d6f16a2/six-1.17.0.tar.gz", hash = "sha256:ff70335d468e7eb6ec65b95b99d3a2836546063f63acc5171de367e834932a81", size = 34031, upload-time = "2024-12-04T17:35:28.174Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b7/ce/149a00dd41f10bc29e5921b496af8b574d8413afcd5e30dfa0ed46c2cc5e/six-1.17.0-py2.py3-none-any.whl", hash = "sha256:4721f391ed90541fddacab5acf947aa0d3dc7d27b2e1e8eda2be8970586c3274", size = 11050, upload-time = "2024-12-04T17:35:26.475Z" },
-]
-
-[[package]]
-name = "spaceplot"
-version = "0.1.0"
-source = { editable = "." }
-dependencies = [
-    { name = "cmcrameri" },
-    { name = "matplotlib" },
-]
-
-[package.dev-dependencies]
-dev = [
-    { name = "ipykernel" },
-    { name = "ipywidgets" },
-    { name = "jupytext" },
-    { name = "pre-commit" },
-    { name = "ruff" },
-]
-docs = [
-    { name = "mkdocs" },
-    { name = "mkdocs-material" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "cmcrameri", specifier = ">=1.9" },
-    { name = "matplotlib", specifier = ">=3.7" },
-]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "ipykernel", specifier = ">=6.30.1" },
-    { name = "ipywidgets", specifier = ">=8.1.7" },
-    { name = "jupytext", specifier = ">=1.18.0" },
-    { name = "pre-commit", specifier = ">=4.3.0" },
-    { name = "ruff", specifier = "==0.13.1" },
-]
-docs = [
-    { name = "mkdocs", specifier = "~=1.6" },
-    { name = "mkdocs-material", specifier = "~=9.6" },
 ]
 
 [[package]]
