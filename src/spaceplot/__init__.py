@@ -7,7 +7,7 @@ from .appearance import palettes as plts
 from .appearance.display import Theme, display
 from .appearance.layout import layout
 from .montage_plot import montage_plot
-from .plotting import plt_category, plt_continous, plt_image
+from .plotting import plt_category, plt_continous
 
 __all__ = [
     'aligner',
@@ -20,6 +20,5 @@ __all__ = [
     'montage_plot',
     'plt_category',
     'plt_continous',
-    'plt_image',
     'plt',
 ]
