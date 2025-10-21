@@ -1,5 +1,10 @@
 # Changelog
 
+## `v0.2.0` — [2025-10-21]
+
+- removed plt_image [[1e1a36f](https://github.com/floRaths/spaceplot/commit/1e1a36f)]
+- added prek [[dbc973b](https://github.com/floRaths/spaceplot/commit/dbc973b)]
+
 ## `v0.1.1` — [2025-10-20]
 
 - rename project for distro [[112f301](https://github.com/floRaths/spaceplot/commit/112f301)]
