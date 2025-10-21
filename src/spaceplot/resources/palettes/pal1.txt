@@ -249,7 +249,7 @@
     // "ruff.interpreter": [
     //     "/mnt/scratch/users/floraths/flo_dev/.venv/bin/python"
     // ],
-    // python    
+    // python
     "[python]": {
         "editor.codeActionsOnSave": {
             "source.organizeImports": "explicit"

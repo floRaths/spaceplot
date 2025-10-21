@@ -82,13 +82,13 @@ def plt_category(
     legend_title: str = None,
     legend_cols=None,
 ):
-    if ax == None:
+    if ax is None:
         ax = plt.gca()
 
     if title is None:
         title = color
 
-    if palette == None:
+    if palette is None:
         palette = plts.mode20b
 
     ax.set_title(title)
@@ -107,7 +107,7 @@ def plt_category(
 
     color_dict = {cat: palette[i] for i, cat in enumerate(unique_cats)}
 
-    if type(shuffle) == int:
+    if isinstance(shuffle, int):
         n_sections = shuffle
         shuffle = False
     elif shuffle is True:
@@ -144,7 +144,12 @@ def plt_category(
             legend_title = color
 
         decs.add_legend(
-            ax, categories=unique_cats, palette=palette, title=legend_title, loc=legend_loc, ncol=legend_cols
+            ax,
+            categories=unique_cats,
+            palette=palette,
+            title=legend_title,
+            loc=legend_loc,
+            ncol=legend_cols,
         )
 
     return ax
@@ -181,7 +186,15 @@ def plt_image(
         roi._limit_ax(ax)
         extent = roi.extent_array
 
-    im = ax.imshow(plot_image, vmin=vmin, vmax=vmax, cmap=cmap, extent=extent, origin=origin, **kwargs)
+    im = ax.imshow(
+        plot_image,
+        vmin=vmin,
+        vmax=vmax,
+        cmap=cmap,
+        extent=extent,
+        origin=origin,
+        **kwargs,
+    )
 
     if scale_bar:
         arr = plot_image / np.max(plot_image)
@@ -199,7 +212,13 @@ def plt_image(
             rounded_scale = scale_bar_size
 
         decs.scale_bar(
-            ax, length=rounded_scale, unit='micron', theme=theme, background=True, lw=1, background_alpha=0.75
+            ax,
+            length=rounded_scale,
+            unit='micron',
+            theme=theme,
+            background=True,
+            lw=1,
+            background_alpha=0.75,
         )
 
     return im

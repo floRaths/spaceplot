@@ -35,7 +35,7 @@ def get_axis_ratio(ax):
 def confetti_cmap(n_labels, bg_color: str = None, bg_alpha: float = None, seed: int = None) -> ListedColormap:
     if seed is None:
         seed = 42
-    
+
     rng = np.random.default_rng(seed)  # fixed seed for reproducibility
     colors = rng.random((n_labels, 3))  # RGB
     colors = np.hstack([colors, np.ones((n_labels, 1))])

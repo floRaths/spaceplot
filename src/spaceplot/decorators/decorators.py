@@ -62,7 +62,13 @@ def add_legend(
     if loc in ['right', 'inset_tr', 'inset_tl', 'inset_br', 'inset_bl']:
         if ncol is None:
             ncol = 1 if len(categories) <= 14 else 2 if len(categories) <= 30 else 3
-        anchor = {'right': (1, 1), 'inset_tr': (1, 1), 'inset_tl': (0, 1), 'inset_br': (1, 0), 'inset_bl': (0, 0)}[loc]
+        anchor = {
+            'right': (1, 1),
+            'inset_tr': (1, 1),
+            'inset_tl': (0, 1),
+            'inset_br': (1, 0),
+            'inset_bl': (0, 0),
+        }[loc]
         loc = {
             'right': 'upper left',
             'inset_tr': 'upper right',
@@ -97,7 +103,12 @@ def add_legend(
             handleheight=handleheight,  # Height of legend handles
         )
 
-    plt.setp(legend.get_title(), color=plt.rcParams['axes.labelcolor'], fontweight='bold', size=14)
+    plt.setp(
+        legend.get_title(),
+        color=plt.rcParams['axes.labelcolor'],
+        fontweight='bold',
+        size=14,
+    )
     legend._legend_box.align = 'left'
 
 
@@ -130,7 +141,16 @@ def add_colorbar(ax, cax, loc, title='', ax_dist=0.025, size=1.0):
 
 
 def place_abc_label(
-    ax, label='A', size=20, loc='tl', label_pos='c', style='alpha_box', pad=0.1, box=None, clip_on=True, **kwargs
+    ax,
+    label='A',
+    size=20,
+    loc='tl',
+    label_pos='c',
+    style='alpha_box',
+    pad=0.1,
+    box=None,
+    clip_on=True,
+    **kwargs,
 ):
     label_params, box_params, box = tools.get_abc_style(style, size, box, ax, clip_on, kwargs)
 
@@ -170,7 +190,17 @@ def place_abc_label(
     ax.add_artist(ab)
 
 
-def place_text(ax, label, loc='tl', weight='bold', color=None, size=20, offset=0, offset_type='rel', **kwargs):
+def place_text(
+    ax,
+    label,
+    loc='tl',
+    weight='bold',
+    color=None,
+    size=20,
+    offset=0,
+    offset_type='rel',
+    **kwargs,
+):
     if color is None:
         color = plt.rcParams['text.color']
 
@@ -414,6 +444,14 @@ def color_badge(ax, color, height=None, width=0.05, pad=None):
     y_pos = 1 + (pad / conversion)
     height = height / conversion
 
-    rectangle = Rectangle((0, y_pos), width, height, transform=ax.transAxes, color=color, alpha=1, clip_on=False)
+    rectangle = Rectangle(
+        (0, y_pos),
+        width,
+        height,
+        transform=ax.transAxes,
+        color=color,
+        alpha=1,
+        clip_on=False,
+    )
 
     ax.add_patch(rectangle)

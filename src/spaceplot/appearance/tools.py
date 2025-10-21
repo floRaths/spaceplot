@@ -7,7 +7,8 @@ _grid_vis = Literal[True, False, 'both', 'major', 'minor', None]
 
 
 def set_position(
-    positions: _tick_vis | list[_tick_vis] | tuple[_tick_vis, ...] | None = None, unset_value: bool | None = False
+    positions: _tick_vis | list[_tick_vis] | tuple[_tick_vis, ...] | None = None,
+    unset_value: bool | None = False,
 ):
     # Special cases
     if positions is True:
@@ -43,7 +44,12 @@ def set_position(
 
 
 def set_grid_visibility(
-    ax, *, axis: str = 'both', grid: _grid_vis | None = None, minor: bool | None = None, apply=False
+    ax,
+    *,
+    axis: str = 'both',
+    grid: _grid_vis | None = None,
+    minor: bool | None = None,
+    apply=False,
 ):
     if grid is None:
         return None, None

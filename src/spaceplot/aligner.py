@@ -3,7 +3,14 @@ from typing import Literal
 import numpy as np
 
 aligns = Literal[
-    'top_left', 'top_right', 'bottom_left', 'bottom_right', 'center_left', 'center_right', 'center_top', 'center_bottom'
+    'top_left',
+    'top_right',
+    'bottom_left',
+    'bottom_right',
+    'center_left',
+    'center_right',
+    'center_top',
+    'center_bottom',
 ]
 
 align_map = {

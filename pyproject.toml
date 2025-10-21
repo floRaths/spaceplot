@@ -5,7 +5,7 @@ build-backend = "uv_build"
 [project]
 name = "spaceplot"
 version = "0.0.0"
-description = "Wrappers for Matplotlib"
+description = "layout wrappers for matplotlib"
 keywords = ["matplotlib", "plotting", "wrappers"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -22,10 +22,19 @@ requires-python = ">=3.10"
 dependencies = ["matplotlib >= 3.7", "cmcrameri >= 1.9"]
 
 [dependency-groups]
-dev = ["ipykernel>=6.29.5", "ipywidgets>=8.1.6"]
+dev = [
+    "ipykernel >= 6.30.1",
+    "ipywidgets >= 8.1.7",
+    "pre-commit >= 4.3.0",
+    "ruff == 0.13.1",
+    "jupytext>=1.18.0",
+]
+docs = ["mkdocs ~= 1.6", "mkdocs-material ~= 9.6"]
 
 [tool.uv]
-required-version = ">=0.8.8"
+required-version = ">=0.7.0"
+default-groups = ["dev", "docs"]
 
 [tool.uv-ship]
-release-branch = "master"
+release-branch = "main"
+allow-dirty = false

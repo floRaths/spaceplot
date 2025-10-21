@@ -32,10 +32,38 @@ def get_abc_style(style, size, box, ax, clip_on, kwargs):
     rclw = plt.rcParams['axes.linewidth']
 
     styles = {
-        'label': {'tc': rctc, 'ec': 'none', 'fc': rcec, 'lw': rclw, 'alpha': 1, 'box': False},
-        'alpha_box': {'tc': rctc, 'ec': 'none', 'fc': rcec, 'lw': rclw, 'alpha': 0.1, 'box': True},
-        'frame': {'tc': rctc, 'ec': rcec, 'fc': rcfc, 'lw': rclw, 'alpha': 1, 'box': True},
-        'box': {'tc': rcfc, 'ec': 'none', 'fc': rcec, 'lw': rclw, 'alpha': 1, 'box': True},
+        'label': {
+            'tc': rctc,
+            'ec': 'none',
+            'fc': rcec,
+            'lw': rclw,
+            'alpha': 1,
+            'box': False,
+        },
+        'alpha_box': {
+            'tc': rctc,
+            'ec': 'none',
+            'fc': rcec,
+            'lw': rclw,
+            'alpha': 0.1,
+            'box': True,
+        },
+        'frame': {
+            'tc': rctc,
+            'ec': rcec,
+            'fc': rcfc,
+            'lw': rclw,
+            'alpha': 1,
+            'box': True,
+        },
+        'box': {
+            'tc': rcfc,
+            'ec': 'none',
+            'fc': rcec,
+            'lw': rclw,
+            'alpha': 1,
+            'box': True,
+        },
     }
 
     if style not in styles:
