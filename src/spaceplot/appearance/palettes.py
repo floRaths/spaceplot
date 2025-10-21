@@ -1,0 +1,291 @@
+from cmcrameri import cm
+
+set25 = ['#72FFAB', '#A16CFD', '#FF7043', '#008FFF', '#D32F2F',
+         '#7CB342', '#7F34BE', '#FFCA28', '#0C8668', '#FB4695',
+         '#005EE1', '#90A4AE', '#28EDED', '#A17B64', '#FFFF58',
+         '#BC29AE', '#006D8F', '#FFBAFF', '#FFD091', '#5C6BC0',
+         '#F490B2', '#C6E1A6']
+
+set25b = ['#7CB342', '#A16CFD', '#FF7043', '#008FFF', '#0C8668',
+          '#FFCA28', '#BC29AE', '#28EDED', '#D32F2F', '#FFBAFF']
+
+palD3 = ['#1F77B4FF', '#FF7F0EFF', '#2CA02CFF', '#D62728FF', 
+         '#9467BDFF', '#8C564BFF', '#E377C2FF', '#7F7F7FFF', 
+         '#BCBD22FF', '#17BECFFF', '#AEC7E8FF', '#FFBB78FF', 
+         '#98DF8AFF', '#FF9896FF', '#C5B0D5FF', '#C49C94FF', 
+         '#F7B6D2FF', '#C7C7C7FF', '#DBDB8DFF', '#9EDAE5FF']
+
+adobe = ['#0fb5ae', '#4046ca', '#f68511', '#de3d82', 
+         '#7e84fa', '#72e06a', '#147af3', '#7326d3', 
+         '#e8c600', '#cb5d00', '#008f5d', '#bce931']
+
+custom = ['#9467bd', '#7fd7c1', '#e88b00', '#d9739e', 
+         '#68b0cf', '#008f5d', '#d13e38', '#2777b4', 
+         '#72e06a', '#9f765e', '#008f5d', '#bce931']
+
+mode20 = ['#9473ae', '#f19900', '#37b067', '#d15d58', '#6296bc', 
+          '#85ccba', '#f7cf4a', '#376c72', '#d48ad4', '#9f765e', 
+          '#c7c1d1', '#ffc097', '#bbe2ad', '#808080', '#b7e0e6',
+          '#cef2df', '#eedebe', '#7db8b9', '#ebc7e8', '#dac1b1',
+          ]
+
+mode20b= ['#8a6cae', '#f7cf4a', '#76ccb6', '#d15d58', '#6296bc', 
+          '#f19900', '#37b067', '#376c72', '#a84680', '#a17b64', 
+          '#c5b3e8', '#bbe2ad', '#ffac97', '#cef2df', '#d48ad4',
+          '#7db8b9', '#d4bbac', '#b7e0e6', '#ebcae8', '#eedebe',
+          ]
+
+gemstone = ['#bcc7ee', '#8263b1', '#6fe3d4', '#00c7ad', '#f19900', '#c75e0c', '#b1abb4', '#8b6f8b', '#96bbba', '#4b877a']
+
+material_colors = {
+    "red": {
+        0: "#ffebee",
+        1: "#ffcdd2",
+        2: "#ef9a9a",
+        3: "#e57373",
+        4: "#ef5350",
+        5: "#f44336",
+        6: "#e53935",
+        7: "#d32f2f",
+        8: "#c62828",
+        9: "#b71c1c",
+    },
+    "pink": {
+        0: "#fce4ec",
+        1: "#f8bbd0",
+        2: "#f48fb1",
+        3: "#f06292",
+        4: "#ec407a",
+        5: "#e91e63",
+        6: "#d81b60",
+        7: "#c2185b",
+        8: "#ad1457",
+        9: "#880e4f",
+    },
+    "purple": {
+        0: "#f3e5f5",
+        1: "#e1bee7",
+        2: "#ce93d8",
+        3: "#ba68c8",
+        4: "#ab47bc",
+        5: "#9c27b0",
+        6: "#8e24aa",
+        7: "#7b1fa2",
+        8: "#6a1b9a",
+        9: "#4a148c",
+    },
+    "d.purple": {
+        0: "#ede7f6",
+        1: "#d1c4e9",
+        2: "#b39ddb",
+        3: "#9575cd",
+        4: "#7e57c2",
+        5: "#673ab7",
+        6: "#5e35b1",
+        7: "#512da8",
+        8: "#4527a0",
+        9: "#311b92",
+    },
+    "indigo": {
+        0: "#e8eaf6",
+        1: "#c5cae9",
+        2: "#9fa8da",
+        3: "#7986cb",
+        4: "#5c6bc0",
+        5: "#3f51b5",
+        6: "#3949ab",
+        7: "#303f9f",
+        8: "#283593",
+        9: "#1a237e",
+    },
+    "blue": {
+        0: "#e3f2fd",
+        1: "#bbdefb",
+        2: "#90caf9",
+        3: "#64b5f6",
+        4: "#42a5f5",
+        5: "#2196f3",
+        6: "#1e88e5",
+        7: "#1976d2",
+        8: "#1565c0",
+        9: "#0d47a1",
+    },
+    "l.blue": {
+        0: "#e1f5fe",
+        1: "#b3e5fc",
+        2: "#81d4fa",
+        3: "#4fc3f7",
+        4: "#29b6f6",
+        5: "#03a9f4",
+        6: "#039be5",
+        7: "#0288d1",
+        8: "#0277bd",
+        9: "#01579b",
+    },
+    "cyan": {
+        0: "#e0f7fa",
+        1: "#b2ebf2",
+        2: "#80deea",
+        3: "#4dd0e1",
+        4: "#26c6da",
+        5: "#00bcd4",
+        6: "#00acc1",
+        7: "#0097a7",
+        8: "#00838f",
+        9: "#006064",
+    },
+    "teal": {
+        0: "#e0f2f1",
+        1: "#b2dfdb",
+        2: "#80cbc4",
+        3: "#4db6ac",
+        4: "#26a69a",
+        5: "#009688",
+        6: "#00897b",
+        7: "#00796b",
+        8: "#00695c",
+        9: "#004d40",
+    },
+    "green": {
+        0: "#e8f5e9",
+        1: "#c8e6c9",
+        2: "#a5d6a7",
+        3: "#81c784",
+        4: "#66bb6a",
+        5: "#4caf50",
+        6: "#43a047",
+        7: "#388e3c",
+        8: "#2e7d32",
+        9: "#1b5e20",
+    },
+    "l.green": {
+        0: "#f1f8e9",
+        1: "#dcedc8",
+        2: "#c5e1a5",
+        3: "#aed581",
+        4: "#9ccc65",
+        5: "#8bc34a",
+        6: "#7cb342",
+        7: "#689f38",
+        8: "#558b2f",
+        9: "#33691e",
+    },
+    "lime": {
+        0: "#f9fbe7",
+        1: "#f0f4c3",
+        2: "#e6ee9c",
+        3: "#dce775",
+        4: "#d4e157",
+        5: "#cddc39",
+        6: "#c0ca33",
+        7: "#afb42b",
+        8: "#9e9d24",
+        9: "#827717",
+    },
+    "yellow": {
+        0: "#fffde7",
+        1: "#fff9c4",
+        2: "#fff59d",
+        3: "#fff176",
+        4: "#ffee58",
+        5: "#ffeb3b",
+        6: "#fdd835",
+        7: "#fbc02d",
+        8: "#f9a825",
+        9: "#f57f17",
+    },
+    "amber": {
+        0: "#fff8e1",
+        1: "#ffecb3",
+        2: "#ffe082",
+        3: "#ffd54f",
+        4: "#ffca28",
+        5: "#ffc107",
+        6: "#ffb300",
+        7: "#ffa000",
+        8: "#ff8f00",
+        9: "#ff6f00",
+    },
+    "orange": {
+        0: "#fff3e0",
+        1: "#ffe0b2",
+        2: "#ffcc80",
+        3: "#ffb74d",
+        4: "#ffa726",
+        5: "#ff9800",
+        6: "#fb8c00",
+        7: "#f57c00",
+        8: "#ef6c00",
+        9: "#e65100",
+    },
+    "d.orange": {
+        0: "#fbe9e7",
+        1: "#ffccbc",
+        2: "#ffab91",
+        3: "#ff8a65",
+        4: "#ff7043",
+        5: "#ff5722",
+        6: "#f4511e",
+        7: "#e64a19",
+        8: "#d84315",
+        9: "#bf360c",
+    },
+    "brown": {
+        0: "#efebe9",
+        1: "#d7ccc8",
+        2: "#bcaaa4",
+        3: "#a1887f",
+        4: "#8d6e63",
+        5: "#795548",
+        6: "#6d4c41",
+        7: "#5d4037",
+        8: "#4e342e",
+        9: "#3e2723",
+    },
+    "grey": {
+        0: "#fafafa",
+        1: "#f5f5f5",
+        2: "#eeeeee",
+        3: "#e0e0e0",
+        4: "#bdbdbd",
+        5: "#9e9e9e",
+        6: "#757575",
+        7: "#616161",
+        8: "#424242",
+        9: "#212121",
+    },
+    "blue grey": {
+        0: "#eceff1",
+        1: "#cfd8dc",
+        2: "#b0bec5",
+        3: "#90a4ae",
+        4: "#78909c",
+        5: "#607d8b",
+        6: "#546e7a",
+        7: "#455a64",
+        8: "#37474f",
+        9: "#263238",
+    },
+}
+
+
+
+
+class _color_package():
+    def __init__(self, color_dict):
+        import matplotlib.colors as mcolors
+
+        ori_names = list(color_dict.keys())
+        names = [s.replace('.', '_') for s in ori_names]
+        names[-1] = 'bl_grey'
+
+        for idx in range(len(material_colors)):
+        
+            c_name = names[idx]
+            colors = list(color_dict[ori_names[idx]].values())
+
+            # Create a LinearSegmentedColormap
+            cmap = mcolors.LinearSegmentedColormap.from_list(c_name, colors, N=256)
+            setattr(self, c_name, cmap)
+
+mc = _color_package(material_colors)

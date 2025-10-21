@@ -1,0 +1,340 @@
+{
+    "update.showReleaseNotes": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/*.egg-info/": true
+    },
+    // workbench
+    "workbench.colorTheme": "Theme",
+    "workbench.iconTheme": "vscode-seedling-icon-theme-plus",
+    "workbench.productIconTheme": "fluent-icons",
+    "workbench.list.openMode": "doubleClick",
+    "workbench.editorLargeFileConfirmation": 50,
+    "python.createEnvironment.trigger": "off",
+    "workbench.startupEditor": "none",
+    "workbench.list.smoothScrolling": true,
+    "workbench.editor.decorations.colors": false,
+    "workbench.colorCustomizations": {
+        "terminal.background": "#22252a",
+        "panelTitle.activeBorder": "#d7af2d",
+        "sideBarSectionHeader.background": "#1e2125",
+        "activityBar.background": "#1e2125",
+        "titleBar.activeBackground": "#1e2125",
+        "activityBarBadge.background": "#9d66cc",
+        "sideBarSectionHeader.border": "#3a4048",
+        "sideBarTitle.foreground": "#53aba2",
+        "statusBarItem.remoteBackground": "#53aba2e3",
+        "statusBarItem.remoteForeground": "#25282f",
+        "statusBarItem.remoteHoverForeground": "#363d4a",
+        "editorCursor.foreground": "#d7af2d",
+        "terminalCursor.foreground": "#d7af2d",
+        "notificationsInfoIcon.foreground": "#53aba2",
+        "notificationsErrorIcon.foreground": "#c23c64",
+        "notificationsWarningIcon.foreground": "#d7af2d",
+        "progressBar.background": "#c23c64",
+        "textLink.foreground": "#53aba2c9",
+        "textLink.activeForeground": "#53aba2",
+        "pickerGroup.foreground": "#53aba2",
+        "editorBracketHighlight.foreground1": "#6d7589",
+        "editorBracketHighlight.foreground2": "#989fb0",
+        "editorBracketHighlight.foreground3": "#6d7589",
+        "editorBracketHighlight.foreground4": "#989fb0",
+        "editorBracketHighlight.foreground5": "#6d7589",
+        "editorBracketHighlight.foreground6": "#989fb0",
+    },
+    // editor
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.cursorSurroundingLines": 3,
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.cursorBlinking": "phase",
+    "editor.fontSize": 13,
+    "editor.fontVariations": true,
+    "editor.smoothScrolling": true,
+    "editor.tokenColorCustomizations": {
+        "variables": "#D19A66",
+        "functions": "#9d66cc",
+        "comments": "#6d7589",
+        "keywords": "#c23c64",
+        "numbers": "#329ce3",
+        "strings": "#53aba2",
+        "types": "#c23c64",
+        "textMateRules": [
+            {
+                "scope": [
+                    "support.type.property-name.table.toml",
+                    "entity.name.type.class",
+                    "entity.other.inherited-class",
+                    "variable.language.special.self.python",
+                    "variable.parameter.function.language.special.self.python"
+                ],
+                "settings": {
+                    "foreground": "#E5C07B"
+                }
+            },
+            {
+                "scope": [
+                    "constant.language",
+                    "support.type.python",
+                    "keyword.operator.bitwise.python",
+                ],
+                "settings": {
+                    "foreground": "#329ce3"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.control.import.python",
+                    "keyword.control.directive.define.cpp",
+                    "keyword.control.directive.include.cpp"
+                ],
+                "settings": {
+                    "foreground": "#1f6e92"
+                }
+            },
+            {
+                "scope": [
+                    "support.type.property-name.toml",
+                    "meta.function-call.generic.python",
+                    "variable.function"
+                ],
+                "settings": {
+                    "foreground": "#9d66cc"
+                }
+            },
+            {
+                "scope": [
+                    "constant.character.escape",
+                    "entity.name.type.class.templated.cpp"
+                ],
+                "settings": {
+                    "foreground": "#D19A66"
+                }
+            },
+            {
+                "scope": [
+                    "support.variable.magic.python",
+                    "keyword.operator.logical.r",
+                    "keyword.operator.comparison",
+                    "keyword.operator.arithmetic",
+                    "keyword.operator.increment.cpp",
+                    "keyword.operator.decrement.cpp",
+                    "keyword.operator.comparison.cpp"
+                ],
+                "settings": {
+                    "foreground": "#c23c64"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.assignment",
+                    "keyword.operator.assignment.cpp"
+                ],
+                "settings": {
+                    "foreground": "#e62e64",
+                    "fontStyle": "italic"
+                }
+            },
+            {
+                "scope": [
+                    "keyword.operator.logical.python",
+                    "keyword.operator.logical.cpp",
+                    "keyword.operator.bitwise.cpp"
+                ],
+                "settings": {
+                    "foreground": "#3b7b75"
+                }
+            },
+            {
+                "scope": [
+                    "constant.other.caps.python",
+                    "variable.other.enummember.cpp"
+                ],
+                "settings": {
+                    "foreground": "#53aba2"
+                }
+            },
+            {
+                "scope": [
+                    "variable.other.r",
+                    "variable.other.global.cpp",
+                    "entity.name.function.preprocessor.cpp",
+                    "variable.other.object"
+                ],
+                "settings": {
+                    "foreground": "#ABB2BF"
+                }
+            },
+            {
+                "scope": [
+                    "punctuation.separator.colon",
+                    "keyword.operator.other.r",
+                    "keyword.other.r",
+                    "punctuation.terminator.statement.cpp"
+                ],
+                "settings": {
+                    "foreground": "#6d7589"
+                }
+            }
+        ]
+    },
+    // terminal
+    "terminal.integrated.enableShellIntegration": false,
+    "terminal.integrated.lineHeight": 1.15,
+    "terminal.external.osxExec": "/bin/bash",
+    "terminal.external.linuxExec": "/bin/bash",
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.tabs.defaultIcon": "send",
+    "terminal.integrated.inheritEnv": false,
+    // explorer
+    "explorer.confirmDragAndDrop": false,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "explorer.decorations.colors": false,
+    "explorer.autoOpenDroppedFile": false,
+    // jupyter
+    "jupyter.askForKernelRestart": false,
+    "jupyter.runStartupCommands": [
+        "%load_ext autoreload\n%autoreload 2"
+    ],
+    //notebook
+    "notebook.output.textLineLimit": 500,
+    "notebook.showFoldingControls": "always",
+    "notebook.output.scrolling": true,
+    "notebook.output.wordWrap": true,
+    "notebook.output.fontSize": 13,
+    // git
+    "git.decorations.enabled": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "git.openRepositoryInParentFolders": "never",
+    "git-autoconfig.configList": [
+        {
+            "user.email": "raths.f@gmail.com",
+            "user.name": "floRaths"
+        },
+        {
+            "user.email": "flo.raths@singulargenomics.com",
+            "user.name": "floraths"
+        }
+    ],
+    "gitConfigUser.profiles": [
+        {
+            "label": "Work",
+            "email": "flo.raths@singulargenomics.com",
+            "userName": "floraths",
+            "selected": true,
+            "id": "bb099671-d605-4a44-a0e6-07f7bee462a9",
+            "signingKey": ""
+        }
+    ],
+    "window.confirmSaveUntitledWorkspace": false,
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "scm.alwaysShowRepositories": true,
+    "aws.suppressPrompts": {
+        "fileViewerEdit": true
+    },
+    // ruff
+    "ruff.configuration": {
+        "format": {
+            "quote-style": "single"
+        }
+    },
+    "ruff.lineLength": 120,
+    // "ruff.interpreter": [
+    //     "/mnt/scratch/users/floraths/flo_dev/.venv/bin/python"
+    // ],
+    // python    
+    "[python]": {
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": "explicit"
+        },
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.defaultColorDecorators": "never",
+        "editor.formatOnType": true,
+        "editor.wordBasedSuggestions": "off",
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "python.languageServer": "Pylance",
+    "python.analysis.diagnosticMode": "openFilesOnly",
+    "python.analysis.indexing": false,
+    "python.analysis.exclude": [
+        "**/node_modules",
+        "**/__pycache__",
+        "**/.venv",
+        "build/",
+        "dist/"
+    ],
+    "[toml]": {
+        "editor.defaultFormatter": "tamasfe.even-better-toml"
+    },
+    "python.defaultInterpreterPath": "/Users/flo/.local/share/uv/python/cpython-3.12.10-macos-aarch64-none/bin/python3.12",
+    "atlascode.jira.explorer.fetchAllQueryResults": false,
+    "atlascode.jira.enabled": true,
+    "atlascode.bitbucket.explorer.enabled": true,
+    "atlascode.bitbucket.enabled": true,
+    "atlascode.jira.jqlList": [
+        {
+            "id": "e4d10a53-526f-4571-85e1-bb8a47a0454a",
+            "enabled": true,
+            "name": "My singulargenomics Issues",
+            "query": "assignee = currentUser() AND resolution = Unresolved ORDER BY lastViewed DESC",
+            "siteId": "89e1296a-74cd-4afd-b66e-82a9ffbd7433",
+            "monitor": true
+        }
+    ],
+    "redhat.telemetry.enabled": false,
+    "chat.editing.alwaysSaveWithGeneratedChanges": true,
+    "cSpell.enabled": false,
+    "r.plot.defaults.fullWindowMode": true,
+    "r.lsp.diagnostics": false,
+    "r.libPaths": [
+        "/mnt/user/rathsf/miniconda3/lib/R/library"
+    ],
+    "r.helpPanel.cacheIndexFiles": "Global",
+    "yaml.schemas": {
+        "file:///Users/flo/.vscode/extensions/atlassian.atlascode-3.8.6/resources/schemas/pipelines-schema.json": "bitbucket-pipelines.yml"
+    },
+    "vscode-serial-monitor.logFileDirectory": "/Users/florianraths/Code/Arduino-Sketches/.vscode/log_serial",
+    "arduino.path": "/opt/homebrew/bin/",
+    "arduino.commandPath": "arduino-cli",
+    "arduino.useArduinoCli": true,
+    "arduino.additionalUrls": [
+        "https://adafruit.github.io/arduino-board-index/package_adafruit_index.json"
+    ],
+    "cmake.showOptionsMovedNotification": false,
+    "r.plot.useHttpgd": true,
+    "cmake.configureOnOpen": true,
+    "cmake.additionalCompilerSearchDirs": [
+        "/opt/homebrew/bin/cmake"
+    ],
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    "diffEditor.codeLens": true,
+    "editor.minimap.showSlider": "always",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "docker.extension.enableComposeLanguageServer": false,
+    "git.replaceTagsWhenPull": true,
+    "arduinoMakerWorkshop.arduinoCLI.userDirectory": "/Users/floraths/Documents/Arduino\n\n",
+    "git-autoconfig.ignoreRootList": [
+        "/Users/floraths/Code/spaceplot",
+        "/Users/floraths/Code/repositories/aesthetica"
+    ],
+    // 4. (Optional) Also tell VS Code not to even scan those folders for file‑watching
+    // "files.watcherExclude": {
+    //     "**/node_modules": true,
+    //     "**/__pycache__": true,
+    //     "**/.venv": true
+    // },
+    // "search.exclude": {
+    //     "**/node_modules": true,
+    //     "**/__pycache__": true,
+    //     "**/.venv": true
+    // },
+}

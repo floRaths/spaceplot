@@ -1,0 +1,7 @@
+*.ipynb
+*.pyc
+
+# Python packaging
+*.egg-info/
+build/
+dist/
