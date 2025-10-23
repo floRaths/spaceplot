@@ -1,5 +1,10 @@
 # Changelog
 
+## `v0.2.1` — [2025-10-22]
+
+- include resources in package [[7ce332a](https://github.com/floRaths/spaceplot/commit/7ce332a)]
+- removed stale imports [[97adeb8](https://github.com/floRaths/spaceplot/commit/97adeb8)]
+
 ## `v0.2.0` — [2025-10-21]
 
 - removed plt_image [[1e1a36f](https://github.com/floRaths/spaceplot/commit/1e1a36f)]
