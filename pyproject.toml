@@ -7,6 +7,16 @@ build-backend = "setuptools.build_meta"
 where = ["src"]
 include = ["spaceplot*"]
 
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.package-data]
+"spaceplot.resources" = [
+    "fonts/*/*.ttf",
+    "fonts/*/*.otf",
+    "palettes/*",
+]
+
 [project]
 name = "mpl-spaceplot"
 version = "0.2.0"
