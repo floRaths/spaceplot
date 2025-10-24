@@ -15,7 +15,7 @@ def layout(
     axs,
     *,
     axis: str = 'both',
-    title: str = None,
+    title: str | list = None,
     x_label: str = None,
     y_label: str = None,
     abc: str | bool = None,
@@ -47,7 +47,7 @@ def layout(
     # ensure axs is a list
     if not isinstance(axs, Iterable):
         axs = [axs]
-    if not isinstance(title, Iterable):
+    if not isinstance(title, list):
         title = [title]
 
     handle_abc_labels(axs, abc, **kwargs)
