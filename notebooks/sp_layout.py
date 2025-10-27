@@ -8,14 +8,13 @@
 #       format_version: '1.3'
 #       jupytext_version: 1.18.1
 #   kernelspec:
-#     display_name: spaceplot
+#     display_name: mpl-spaceplot
 #     language: python
 #     name: python3
 # ---
 
 # %%
 import numpy as np
-
 import spaceplot as sp
 
 sp.display('dark', retina=True, transparent=False)
@@ -27,45 +26,34 @@ datax, datay = np.random.rand(50), np.random.rand(50)
 
 # %%
 import layout_v2 as l2
-
-import spaceplot.appearance.layout as ly
-from spaceplot.appearance import tools as aptls
-
-# %%
-kwargs = {
-    'y_ticks': True,
-    'tick_color': 'test value',  #
-    'grid_label': 'test value',
-    'title': 'hello',
-    # 'x_grid_color': 'blue',
-    'minor': True,
-    'grid_color': 'red',
-    'y_tick_size': 12,
-    'x_grid': True,
-    'y_margins': 0.2,
-    'label': 'X Axis',
-}
-
-axis_params, static_params = l2.merge_axis_kwargs(kwargs)
-
-x_label_params, x_tick_params, x_params = l2.compile_axis_settings(axis_params, axis='x')
-y_label_settings, y_tick_params, y_params = l2.compile_axis_settings(axis_params, axis='y')
-
-x_params
+from matplotlib.ticker import AutoMinorLocator, NullLocator
 
 # %%
 axs = sp.montage_plot(1, panel_size=(6.5, 4.5))
 axs.scatter(datax, datay)
 
-l2.layout(axs, grid='minor')
+# axs.xaxis.set_minor_locator(AutoMinorLocator())
+l2.layout(
+    axs,
+    title='Scatter',
+    # ticks='all',
+    grid='major',
+    minor='2',
+    x_label_color='crimson',
+    x_label='X-axis',
+    y_label='Y-axis',
+    # grid_zorder=10
+)
+
+
 
 
 # %%
 axs = sp.montage_plot(1, panel_size=(4.5, 3.5))
 axs.scatter(datax, datay)
 
-l2.set_tick_grid_visibility(axs, axis='x', ticks='1', minor=True, grid='major')
-l2.set_tick_grid_visibility(axs, axis='y', ticks='1', minor=True, grid='major')
+l2.tick_grid_visibility(axs, axis='x', ticks='1', minor=True, grid='major')
+l2.tick_grid_visibility(axs, axis='y', ticks='1', minor=True, grid='major')
 
 
 # %%
@@ -79,7 +67,6 @@ design = [[0, 1, 2],
           [-1, 3, 4]]
 
 import numpy as np
-
 
 def calculate_figure_size(design, ref_panel_idx, ref_panel_size, w_ratios, h_ratios):
     """
