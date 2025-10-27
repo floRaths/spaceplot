@@ -23,27 +23,47 @@ sp.display('dark', retina=True, transparent=False)
 # %%
 datax, datay = np.random.rand(50), np.random.rand(50)
 
+
 # %%
-design = [[0, 1, 2], [0, 3, 2], [-1, 3, 4]]
+import layout_v2 as l2
+import spaceplot.appearance.layout as ly
+from spaceplot.appearance import tools as aptls
 
-sp.plt.rcParams['figure.constrained_layout.h_pad'] = 0.05
-sp.plt.rcParams['figure.constrained_layout.w_pad'] = 0.05
+# %%
+kwargs = {
+    'y_ticks': True,
+    'tick_color': 'test value',  #
+    'grid_label': 'test value',
+    'title': 'hello',
+    # 'x_grid_color': 'blue',
+    'minor': True,
+    'grid_color': 'red',
+    'y_tick_size': 12,
+    'x_grid': True,
+    'y_margins': 0.2,
+    'label': 'X Axis',
+}
 
-axs, labels, axes_by_label = sp.montage_plot(
-    # design=design,
-    n_cols=3,
-    n_rows=2,
-    panel_size=(3, 3),
-    ref_panel_idx=0,
-    w_ratios=(1, 1, 2),
-    h_ratios=(1, 1),
-    layout='constrained',
-    wspace=0,
-    hspace=0,
-)
+axis_params, static_params = l2.merge_axis_kwargs(kwargs)
+
+x_label_params, x_tick_params, x_params = l2.compile_axis_settings(axis_params, axis='x')
+y_label_settings, y_tick_params, y_params = l2.compile_axis_settings(axis_params, axis='y')
+
+x_params
+
+# %%
+axs = sp.montage_plot(1, panel_size=(6.5, 4.5))
 axs.scatter(datax, datay)
-sp.layout(axs, abc=True, ticks=False, margins=0.5)
-sp.show()
+
+l2.layout(axs, grid='minor')
+
+
+# %%
+axs = sp.montage_plot(1, panel_size=(4.5, 3.5))
+axs.scatter(datax, datay)
+
+l2.tick_grid_visibility(axs, axis='x', ticks='1', minor=True, grid='major')
+l2.tick_grid_visibility(axs, axis='y', ticks='1', minor=True, grid='major')
 
 
 # %%
@@ -52,15 +72,16 @@ ref_panel_size = (3, 3)
 w_ratios = (1, 1, 2)
 h_ratios = (1, 2, 1)
 
-design = [[0, 1, 2], [0, 3, 2], [-1, 3, 4]]
+design = [[0, 1, 2], 
+          [0, 3, 2], 
+          [-1, 3, 4]]
 
 import numpy as np
-
 
 def calculate_figure_size(design, ref_panel_idx, ref_panel_size, w_ratios, h_ratios):
     """
     Calculate the figure size needed for a given subplot design.
-
+    
     Parameters
     ----------
     design : list of lists
@@ -79,32 +100,31 @@ def calculate_figure_size(design, ref_panel_idx, ref_panel_size, w_ratios, h_rat
     (fig_width, fig_height) : tuple
         Total figure size in inches.
     """
-
+    
     # Convert to numpy for convenience
     design = np.array(design)
-
+    
     # Find where the reference panel sits
     rows, cols = np.where(design == ref_panel_idx)
     if len(rows) == 0:
-        raise ValueError('Reference panel index not found in design.')
-
+        raise ValueError("Reference panel index not found in design.")
+    
     row_span = rows.max() - rows.min() + 1
     col_span = cols.max() - cols.min() + 1
-
+    
     # Effective ratios spanned by the reference panel
-    ref_w_ratio = sum(w_ratios[cols.min() : cols.max() + 1])
-    ref_h_ratio = sum(h_ratios[rows.min() : rows.max() + 1])
-
+    ref_w_ratio = sum(w_ratios[cols.min():cols.max()+1])
+    ref_h_ratio = sum(h_ratios[rows.min():rows.max()+1])
+    
     # Scale factors to convert ratio units -> inches
     scale_x = ref_panel_size[0] / ref_w_ratio
     scale_y = ref_panel_size[1] / ref_h_ratio
-
+    
     # Total figure size
     fig_width = sum(w_ratios) * scale_x
     fig_height = sum(h_ratios) * scale_y
-
+    
     return fig_width, fig_height
-
 
 fig_size = calculate_figure_size(design, ref_panel_idx, ref_panel_size, w_ratios, h_ratios)
 print(fig_size)
@@ -117,6 +137,7 @@ def test_data(n_points, x_limits=(0, 1), y_limits=(0, 1), seed=None):
     y = np.random.uniform(y_limits[0], y_limits[1], n_points)
     x = np.random.uniform(x_limits[0], x_limits[1], n_points)
     return x, y
+
 
 
 # %%
@@ -140,9 +161,7 @@ x, y = test_data(100, seed=None)
 
 design = [[1, 1, 2, 2, 3, 3], [-1, 4, 4, 5, 5, -1]]
 
-axs = sp.montage_plot(
-    design=design, panel_size=2, layout='constrained', h_ratios=[2, 2], w_ratios=[0.2, 0.2, 0.2, 0.2, 0.2, 0.2]
-)  # , hspace=0.5, wspace=1
+axs = sp.montage_plot(design=design, panel_size=2, layout='constrained', h_ratios=[2, 2], w_ratios=[0.2, 0.2, 0.2, 0.2, 0.2, 0.2])  # , hspace=0.5, wspace=1
 
 
 # for ax in axs:
@@ -163,3 +182,36 @@ sp.layout(
     y_breaks=[0, 0.5, 1],
     # make_square=True,
 )
+
+
+# %%
+# design = [[0, 1, 2], [0, 3, 2], [-1, 3, 4]]
+
+# sp.plt.rcParams['figure.constrained_layout.h_pad'] = 0.05
+# sp.plt.rcParams['figure.constrained_layout.w_pad'] = 0.05
+
+# axs = sp.montage_plot(
+#     # design=design,
+#     n_cols=3,
+#     n_rows=2,
+#     panel_size=(3, 3),
+#     ref_panel=0,
+#     w_ratios=(1, 1, 2),
+#     h_ratios=(1, 1),
+#     layout='constrained',
+#     wspace=0,
+#     hspace=0,
+# )
+
+# axs.scatter(datax, datay)
+# sp.layout(axs, abc=True, ticks=False, margins=0.5)
+# sp.plt.show()
+
+
+# %%
+# from matplotlib import font_manager
+
+# # List all available font names registered with matplotlib
+# fonts = sorted(set(f.name for f in font_manager.fontManager.ttflist))
+# for font in fonts:
+#     print(font)
