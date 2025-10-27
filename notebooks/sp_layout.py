@@ -15,6 +15,7 @@
 
 # %%
 import numpy as np
+
 import spaceplot as sp
 
 sp.display('dark', retina=True, transparent=False)
@@ -26,6 +27,7 @@ datax, datay = np.random.rand(50), np.random.rand(50)
 
 # %%
 import layout_v2 as l2
+
 import spaceplot.appearance.layout as ly
 from spaceplot.appearance import tools as aptls
 
@@ -62,8 +64,8 @@ l2.layout(axs, grid='minor')
 axs = sp.montage_plot(1, panel_size=(4.5, 3.5))
 axs.scatter(datax, datay)
 
-l2.tick_grid_visibility(axs, axis='x', ticks='1', minor=True, grid='major')
-l2.tick_grid_visibility(axs, axis='y', ticks='1', minor=True, grid='major')
+l2.set_tick_grid_visibility(axs, axis='x', ticks='1', minor=True, grid='major')
+l2.set_tick_grid_visibility(axs, axis='y', ticks='1', minor=True, grid='major')
 
 
 # %%
@@ -77,6 +79,7 @@ design = [[0, 1, 2],
           [-1, 3, 4]]
 
 import numpy as np
+
 
 def calculate_figure_size(design, ref_panel_idx, ref_panel_size, w_ratios, h_ratios):
     """

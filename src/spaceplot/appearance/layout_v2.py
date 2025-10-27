@@ -1,17 +1,25 @@
+from collections.abc import Iterable
+from itertools import cycle
 from typing import Literal
 
 import spaceplot.appearance.layout as ly
 
+from .. import utils
+
 _tick_vis = Literal[True, False, '1', '2', 'both', 'all', None]
 _grid_vis = Literal[True, False, 'both', 'major', 'minor', None]
 
+major_grid_style = 'solid'
+minor_grid_style = (0, (1, 2))
+
 # TODO tick param hygiene... there are likely some grid, tick, minor params that don't belong
+# I think currently, tick visibility will override settings from other setters... need to fix that
 # implement allowed_params check like started in layout_v1
 # find solution for tick_labels
 # parse_axis_params needs better input filtering... currently everything goes through
 
 
-def layout(
+def layout_v2(
     axs,
     *,
     title: str | list = None,
@@ -51,14 +59,14 @@ def layout(
     title_settings = get_hook_dict(static_kwargs, 'title_', remove_hook=True)
 
     # ensure axs is a list
-    if not isinstance(axs, ly.Iterable):
+    if not isinstance(axs, Iterable):
         axs = [axs]
     if not isinstance(title, list):
         title = [title]
 
     ly.handle_abc_labels(axs, abc, **kwargs)
 
-    pairs = list(zip(axs, ly.cycle(title)))
+    pairs = list(zip(axs, cycle(title)))
 
     for ax, title in pairs:
         viz(ax, ticks=ticks, grid=grid, minor=minor, **kwargs)
@@ -86,10 +94,14 @@ def layout(
 
 
 def handle_tick_settings(ax, axis, tick_settings):
-    if len(tick_settings) == 0:
-        return
+    # Set default grid style, since rcParams don't offer minor grid style
+    if 'grid_linestyle' not in tick_settings:
+        tick_settings['grid_linestyle'] = [major_grid_style, minor_grid_style]
 
-    majmin_settings = {k: ly.utils.maj_min_args(maj_min=v) for k, v in tick_settings.items()}
+    # if len(tick_settings) == 0:
+    #     return
+
+    majmin_settings = {k: utils.maj_min_args(maj_min=v) for k, v in tick_settings.items()}
 
     for i, which in enumerate(['major', 'minor']):
         tick_settings_select = {k: v[i] for k, v in majmin_settings.items()}
@@ -114,14 +126,21 @@ def viz(
         if v is not None
     }
 
-    viz_kwargs = {k: v for k, v in kwargs.items() if any([k.endswith(h) for h in ['ticks', 'grid', 'minor']])}
+    ax_below = False if 'grid_zorder' in kwargs else True
+    ax.set_axisbelow(ax_below)
+
+    # filter kwargs and merge with args to a single dict
+    viz_kwargs = {k: v for k, v in kwargs.items() if any([k.endswith(h) for h in ['_ticks', '_grid', '_minor']])}
     merged = {**viz_args, **viz_kwargs}
+
+    # break down merged into x_ and y_ specific params
     viz_params = parse_axis_params(params=merged)
     xviz = get_hook_dict(viz_params, 'x_', remove_hook=True)
     yviz = get_hook_dict(viz_params, 'y_', remove_hook=True)
 
-    tick_grid_visibility(ax, axis='x', **xviz)
-    tick_grid_visibility(ax, axis='y', **yviz)
+    # apply settings
+    set_tick_grid_visibility(ax, axis='x', **xviz)
+    set_tick_grid_visibility(ax, axis='y', **yviz)
 
 
 def parse_grid_visibility(
@@ -144,30 +163,46 @@ def parse_grid_visibility(
     return major_setter, minor_setter
 
 
-def tick_grid_visibility(ax, *, axis='x', ticks=None, minor=None, grid=None):
+def set_tick_grid_visibility(ax, *, axis='x', ticks=None, minor=None, grid=None):
+    # mapping for tick visibility in x/y axis
+    p1 = 'bottom' if axis == 'x' else 'left'
+    p2 = 'top' if axis == 'x' else 'right'
+
+    # this determines the logic for tick visibility
+    def apply_logic(value):
+        logic_1 = True if value in ('1', 'both', 'all', True) else False
+        logic_2 = True if value in ('2', 'both', 'all') else False
+        return logic_1, logic_2
+
     if ticks is None:
         viz = {}
+        # viz_min = {}
     else:
-        logic_1 = True if ticks in ('1', 'both', 'all', True) else False
-        logic_2 = True if ticks in ('2', 'both', 'all') else False
+        logic_1, logic_2 = apply_logic(ticks)
 
         viz = {
-            'bottom': logic_1,
-            'labelbottom': logic_1,
-            'top': logic_2,
-            'labeltop': logic_2,
+            p1: logic_1,
+            f'label{p1}': logic_1,
+            p2: logic_2,
+            f'label{p2}': logic_2,
         }
+
+    logic_1, logic_2 = apply_logic(minor)
+
+    viz_min = {
+        p1: viz.get(p1, logic_1),
+        f'label{p1}': viz.get(f'label{p1}', logic_1),
+        p2: viz.get(p2, logic_2),
+        f'label{p2}': viz.get(f'label{p2}', logic_2),
+    }
 
     grid_maj, grid_min = parse_grid_visibility(grid=grid, minor=minor)
 
     axis_obj = getattr(ax, f'{axis}axis')
 
     axis_obj.set_tick_params(which='major', gridOn=grid_maj, **viz)
-    if minor:
-        axis_obj.set_tick_params(which='minor', gridOn=grid_min, **viz)
-        axis_obj.minorticks_on()
-    if minor is False:
-        axis_obj.minorticks_off()
+    axis_obj.minorticks_on()
+    axis_obj.set_tick_params(which='minor', gridOn=grid_min, **viz_min)
 
 
 def get_hook_dict(params, hook, remove_hook: bool = True) -> dict:
