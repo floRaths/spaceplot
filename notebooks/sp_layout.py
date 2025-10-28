@@ -25,26 +25,16 @@ datax, datay = np.random.rand(50), np.random.rand(50)
 
 
 # %%
-import layout_v2 as l2
-from matplotlib.ticker import AutoMinorLocator, NullLocator
-
-# %%
 axs = sp.montage_plot(1, panel_size=(6.5, 4.5))
 axs.scatter(datax, datay)
 
 # axs.xaxis.set_minor_locator(AutoMinorLocator())
-l2.layout(
+sp.layout_v2(
     axs,
-    title='Scatter',
-    # ticks='all',
-    grid='major',
-    minor='2',
-    x_label_color='crimson',
-    x_label='X-axis',
-    y_label='Y-axis',
-    # grid_zorder=10
+    title='Scatter Plot',
+    x_grid='both',
+    minor=False
 )
-
 
 
 

@@ -2,7 +2,7 @@ import numpy as np
 from matplotlib.colors import ListedColormap, to_rgba
 
 allowed_params = {
-    'tick': [
+    'tick_': [
         'size',
         'width',
         'color',
@@ -13,23 +13,10 @@ allowed_params = {
         'labelrotation',
         'labelfontfamily',
         'zorder',
-        # 'tick1On',
-        # 'tick2On',
-        # 'label1On',
-        # 'label2On',
         # 'tickdir',
-        # 'gridOn',
         # 'length',
-        # 'left',
-        # 'bottom',
-        # 'right',
-        # 'top',
-        # 'labelleft',
-        # 'labelbottom',
-        # 'labelright',
-        # 'labeltop',
     ],
-    'label': [
+    'label_': [
         'size',
         'color',
         'pad',
@@ -37,7 +24,7 @@ allowed_params = {
         'fontfamily',
         'zorder',
     ],
-    'title': [
+    'title_': [
         'size',
         'color',
         'pad',
@@ -45,7 +32,7 @@ allowed_params = {
         'fontfamily',
         'zorder',
     ],
-    'grid': [
+    'grid_': [
         'color',
         'alpha',
         'linestyle',
@@ -103,61 +90,27 @@ allowed_params = {
 }
 
 
-[
-    'grid_agg_filter',
-    'grid_alpha',
-    'grid_animated',
-    'grid_antialiased',
-    'grid_clip_box',
-    'grid_clip_on',
-    'grid_clip_path',
-    'grid_color',
-    'grid_dash_capstyle',
-    'grid_dash_joinstyle',
-    'grid_dashes',
-    'grid_data',
-    'grid_drawstyle',
-    'grid_figure',
-    'grid_fillstyle',
-    'grid_gapcolor',
-    'grid_gid',
-    'grid_in_layout',
-    'grid_label',
-    'grid_linestyle',
-    'grid_linewidth',
-    'grid_marker',
-    'grid_markeredgecolor',
-    'grid_markeredgewidth',
-    'grid_markerfacecolor',
-    'grid_markerfacecoloralt',
-    'grid_markersize',
-    'grid_markevery',
-    'grid_mouseover',
-    'grid_path_effects',
-    'grid_picker',
-    'grid_pickradius',
-    'grid_rasterized',
-    'grid_sketch_params',
-    'grid_snap',
-    'grid_solid_capstyle',
-    'grid_solid_joinstyle',
-    'grid_transform',
-    'grid_url',
-    'grid_visible',
-    'grid_xdata',
-    'grid_ydata',
-    'grid_zorder',
-    'grid_aa',
-    'grid_c',
-    'grid_ds',
-    'grid_ls',
-    'grid_lw',
-    'grid_mec',
-    'grid_mew',
-    'grid_mfc',
-    'grid_mfcalt',
-    'grid_ms',
-]
+def get_hook_dict_v2(params, hook, remove_hook: bool = True, check: bool = True) -> dict:
+    hook_params = {}
+    if params == {}:
+        return hook_params
+
+    for key, value in params.items():
+        if not key.startswith(hook):
+            continue
+        param = key.removeprefix(hook) if remove_hook else key
+
+        # print(f"recognized '{hook}' parameter: {key}")
+        if check:
+            if param not in allowed_params.get(hook, []):
+                raise ValueError(
+                    f"Invalid {hook} parameter: '{param}'.\nSupported parameters are: {allowed_params.get(hook, [])}"
+                )
+
+        d = {param: value}
+        hook_params.update(d)
+
+    return hook_params
 
 
 def get_hook_dict(params, hook, remove_hook=True) -> dict:
