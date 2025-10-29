@@ -21,22 +21,42 @@ sp.display('dark', retina=True, transparent=False)
 
 
 # %%
-datax, datay = np.random.rand(50), np.random.rand(50)
+n_points = 150
+datax, datay = np.random.rand(n_points), np.random.rand(n_points)
 
 
 # %%
 axs = sp.montage_plot(1, panel_size=(6.5, 4.5))
-axs.scatter(datax, datay)
+axs.scatter(datax, datay, alpha=0.5)
 
-# axs.xaxis.set_minor_locator(AutoMinorLocator())
-sp.layout_v2(
+sp.layout(
     axs,
     title='Scatter Plot',
-    x_grid='both',
-    minor=False
+    abc=True,
+    # breaks=np.linspace(0, 1, 6),
+    # tick_labelcolor='crimson',
+    # x_ticklabels=['Low', 'Medium', 'High'],
+    lims=(0.01, 2),
+    scale='log',
+    # margins=0.9,
+    grid='both',
+    # abc_box=False,
+    aspect=1,
 )
 
 
+
+# %%
+axis = 'x'
+axis_obj = getattr(axs, f'{axis}axis')
+
+# mapping for tick visibility in x/y axis
+p1 = 'bottom' if axis == 'x' else 'left'
+p2 = 'top' if axis == 'x' else 'right'
+
+keys = [p1, f'label{p1}', p2, f'label{p2}']
+curr_params = axis_obj.get_tick_params()
+curr_params = {k: v for k, v in curr_params.items() if k in keys}
 
 # %%
 axs = sp.montage_plot(1, panel_size=(4.5, 3.5))
