@@ -147,7 +147,7 @@ def place_abc_label(
     loc='tl',
     label_pos='c',
     style='alpha_box',
-    pad=0.1,
+    pad=0.2,
     box=None,
     clip_on=True,
     **kwargs,

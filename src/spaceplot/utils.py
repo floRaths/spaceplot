@@ -32,6 +32,7 @@ allowed_params = {
         'fontfamily',
         'zorder',
     ],
+    'abc_': ['style', 'size', 'loc', 'box', 'pad', 'label_pos'],
     'grid_': [
         'color',
         'alpha',
