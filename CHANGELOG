@@ -1,5 +1,15 @@
 # Changelog
 
+## `v0.3.0` — [2025-10-29]
+
+- updated notebook [[5f79107](https://github.com/floRaths/spaceplot/commit/5f79107)]
+- deprecated old layout api [[7278b55](https://github.com/floRaths/spaceplot/commit/7278b55)]
+- restructred viz settings [[9c44b85](https://github.com/floRaths/spaceplot/commit/9c44b85)]
+- updated notebook [[a5f0006](https://github.com/floRaths/spaceplot/commit/a5f0006)]
+- added layout_v2 to sp. namespace [[f0fa7ca](https://github.com/floRaths/spaceplot/commit/f0fa7ca)]
+- initial pass on new layout api [[cee7f1d](https://github.com/floRaths/spaceplot/commit/cee7f1d)]
+- fix: str titles being iterated [[4745cc6](https://github.com/floRaths/spaceplot/commit/4745cc6)]
+
 ## `v0.2.1` — [2025-10-22]
 
 - include resources in package [[7ce332a](https://github.com/floRaths/spaceplot/commit/7ce332a)]
