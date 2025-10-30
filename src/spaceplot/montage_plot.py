@@ -27,7 +27,8 @@ def montage_plot(
     w_ratios = np.ones(n_cols) if w_ratios is None else np.array(w_ratios)
     h_ratios = np.ones(n_rows) if h_ratios is None else np.array(h_ratios)
 
-    figsize = calculate_figure_size(design, ref_panel, panel_size, w_ratios, h_ratios)
+    if figsize is None:
+        figsize = calculate_figure_size(design, ref_panel, panel_size, w_ratios, h_ratios)
 
     fig = figure(figsize=figsize, layout=layout)
     fig.suptitle(title)
