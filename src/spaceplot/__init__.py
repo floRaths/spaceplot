@@ -9,6 +9,10 @@ from .appearance.layout import layout
 from .montage_plot import montage_plot
 from .plotting import plt_category, plt_continous
 
+
+def show():
+    plt.show()
+
 __all__ = [
     'aligner',
     'decs',
