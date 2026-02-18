@@ -1,5 +1,17 @@
 # Changelog
 
+## `v0.3.1` — [2026-02-17]
+
+- remove import [[8d3b685](https://github.com/floRaths/spaceplot/commit/8d3b685)]
+- revert auto [[2ff45b9](https://github.com/floRaths/spaceplot/commit/2ff45b9)]
+- Merge pull request #1 from floRaths/feat/auto_retina [[daba5bf](https://github.com/floRaths/spaceplot/commit/daba5bf)]
+- guard display call [[a1bc854](https://github.com/floRaths/spaceplot/commit/a1bc854)]
+- allow retina auto detection [[7934dd2](https://github.com/floRaths/spaceplot/commit/7934dd2)]
+- remove dev deps [[1716674](https://github.com/floRaths/spaceplot/commit/1716674)]
+- added show() wrapper [[7741db9](https://github.com/floRaths/spaceplot/commit/7741db9)]
+- fix: wrong grid_ param check [[24db98d](https://github.com/floRaths/spaceplot/commit/24db98d)]
+- fix: figsize arg not applied [[39d27ca](https://github.com/floRaths/spaceplot/commit/39d27ca)]
+
 ## `v0.3.0` — [2025-10-29]
 
 - updated notebook [[5f79107](https://github.com/floRaths/spaceplot/commit/5f79107)]

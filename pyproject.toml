@@ -19,7 +19,7 @@ include-package-data = true
 
 [project]
 name = "mpl-spaceplot"
-version = "0.3.0"
+version = "0.3.1"
 description = "layout wrappers for matplotlib"
 keywords = ["matplotlib", "plotting", "wrappers"]
 classifiers = [
