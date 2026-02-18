@@ -9,18 +9,7 @@ from .. import utils
 from . import inline, styles, tools
 
 
-def display(
-    theme: str | Theme = 'dark',
-    **kwargs,
-):
-    try:
-        displays = subprocess.check_output('system_profiler SPDisplaysDataType', shell=True).decode()
-    except Exception as e:
-        print(f'Could not determine display information: {e}')
-        displays = ''
-    retina = True if 'DELL U2723QE' in displays else False
-    kwargs['retina'] = retina if 'retina' not in kwargs else kwargs['retina']
-
+def display(theme: str | Theme = 'dark', **kwargs):
     theme = Theme(source_theme=theme, **kwargs) if isinstance(theme, str) else theme
     theme.apply()
 
