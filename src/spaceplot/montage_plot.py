@@ -4,6 +4,8 @@ import numpy as np
 from matplotlib import gridspec
 from matplotlib.pyplot import figure
 
+from .appearance.layout import layout as splayout
+
 
 def montage_plot(
     n_plots: int = None,
@@ -47,8 +49,8 @@ def montage_plot(
     axes_list, labels, axes_by_label = get_plot_layout(design, grid)
     axs = Axs(axes_list)
 
-    if len(axs) == 1:
-        return axs[0]
+    # if len(axs) == 1:
+    #     return axs[0]
 
     return axs
 
@@ -132,6 +134,9 @@ class Axs(Sequence):
         # Otherwise, set same value on all axes
         for ax in self._axes:
             setattr(ax, name, value)
+
+    def layout(self, **kwargs):
+        splayout(self._axes, **kwargs)
 
 
 def _build_design(n_plots, n_rows, n_cols):

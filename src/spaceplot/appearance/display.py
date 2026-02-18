@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import subprocess
 from dataclasses import dataclass, field
 
 import matplotlib.pyplot as plt
@@ -9,9 +10,17 @@ from . import inline, styles, tools
 
 
 def display(
-    theme: str | Theme = 'default',
+    theme: str | Theme = 'dark',
     **kwargs,
 ):
+    try:
+        displays = subprocess.check_output('system_profiler SPDisplaysDataType', shell=True).decode()
+    except Exception as e:
+        print(f'Could not determine display information: {e}')
+        displays = ''
+    retina = True if 'DELL U2723QE' in displays else False
+    kwargs['retina'] = retina if 'retina' not in kwargs else kwargs['retina']
+
     theme = Theme(source_theme=theme, **kwargs) if isinstance(theme, str) else theme
     theme.apply()
 

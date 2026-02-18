@@ -13,6 +13,7 @@ from .plotting import plt_category, plt_continous
 def show():
     plt.show()
 
+
 __all__ = [
     'aligner',
     'decs',
