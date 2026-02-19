@@ -29,6 +29,7 @@ allowed_params = {
         'color',
         'pad',
         'rotation',
+        'loc',
         'fontfamily',
         'zorder',
     ],
